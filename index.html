@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>lyrics picker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="p5-bg"></div>
+
+<div id="ui">
+  <header>
+    <div class="header-line">
+      <span class="wordmark">i made a mixtape for u</span>
+    </div>
+    <div class="header-line">
+      <span class="tag">/// vishal gattani</span>
+    </div>
+  </header>
+
+  <img id="card" alt="lyric card" />
+
+  <div id="controls">
+    <button id="pause-btn" class="ctrl-btn" aria-label="Pause">
+      <svg viewBox="0 0 24 24" width="20" height="20"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+    </button>
+    <button id="play-btn" class="ctrl-btn ctrl-btn--primary" aria-label="Play">
+      <svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 4.5v15l14-7.5-14-7.5z" fill="currentColor"/></svg>
+    </button>
+    <button id="stop-btn" class="ctrl-btn" aria-label="Stop">
+      <svg viewBox="0 0 24 24" width="20" height="20"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+<script src="sketch.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
