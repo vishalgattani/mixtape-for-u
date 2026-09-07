@@ -11,7 +11,7 @@ const forwardBtn = document.getElementById('forward-btn');
 
 const LYRIC_MAX_SIZE = 30;
 const LYRIC_MIN_SIZE = 13;
-const SNIPPET_SECONDS = 10;
+const SNIPPET_SECONDS = 30;
 
 let lyrics = [];
 let history = []; // indices into `lyrics`, in the order shown
