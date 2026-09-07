@@ -34,13 +34,29 @@ def _get_json(url: str, params: dict) -> dict:
         return json.load(resp)
 
 
-def find_preview(title: str, artist: str) -> str | None:
-    first_artist = artist.split(",")[0].split("+")[0].strip()
+def primary_artist(artist: str) -> str:
+    """First-billed artist from a "feat."/"&"/"+"-joined credit string."""
+    return artist.split(",")[0].split("+")[0].strip()
 
-    data = _get_json(SEARCH_URL, {"term": f"{title} {first_artist}", "entity": "song", "limit": 10})
-    for r in data.get("results", []):
-        if r.get("trackName", "").strip().lower() == title.strip().lower() and r.get("previewUrl"):
+
+def pick_match(results: list[dict], title: str) -> str | None:
+    """previewUrl of the first result whose trackName exactly matches title."""
+    wanted = title.strip().lower()
+    for r in results:
+        if r.get("trackName", "").strip().lower() == wanted and r.get("previewUrl"):
             return r["previewUrl"]
+    return None
+
+
+def find_preview(title: str, artist: str) -> str | None:
+    first_artist = primary_artist(artist)
+
+    search_data = _get_json(
+        SEARCH_URL, {"term": f"{title} {first_artist}", "entity": "song", "limit": 10}
+    )
+    match = pick_match(search_data.get("results", []), title)
+    if match:
+        return match
 
     # fuzzy search missed it (common for deep cuts) — pull the artist's full
     # catalog and match by exact track name instead.
@@ -50,13 +66,8 @@ def find_preview(title: str, artist: str) -> str | None:
     artist_id = artist_data["results"][0]["artistId"]
 
     catalog = _get_json(LOOKUP_URL, {"id": artist_id, "entity": "song", "limit": 200})
-    for r in catalog.get("results", []):
-        if r.get("wrapperType") != "track":
-            continue
-        if r.get("trackName", "").strip().lower() == title.strip().lower() and r.get("previewUrl"):
-            return r["previewUrl"]
-
-    return None
+    tracks = [r for r in catalog.get("results", []) if r.get("wrapperType") == "track"]
+    return pick_match(tracks, title)
 
 
 def main() -> None:
