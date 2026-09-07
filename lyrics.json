@@ -1,15 +1,93 @@
 [
-  { "title": "Heaven", "artist": "Bazzi", "lyric": "I'm just happy you are who\nyou are", "color": "#6b81c9" },
-  { "title": "you!", "artist": "LANY", "lyric": "Like a flower in the concrete\nSo beautiful and rare", "color": "#d9615f" },
-  { "title": "I'm In Love With You", "artist": "The 1975", "lyric": "I can summarize it for you\nIt's simple and it goes like this\nI'm in love with you, I- I- I- I- I\nI'm in love with you, I- I- I- I- I\nI'm in love with you, I- I- I- I- I", "color": "#8f8f90" },
-  { "title": "About You", "artist": "The 1975", "lyric": "I know a place\nIt's somewhere I go\nwhen I need to remember your face", "color": "#8f8f90" },
-  { "title": "All I Need", "artist": "Nora En Pure", "lyric": "Ooh love\nGimme love 'cause your love is all I\nneed", "color": "#3a86b8" },
-  { "title": "Nice to See You", "artist": "Vansire, FLOOR CRY", "lyric": "Did you know you're really\nsomething?\nYou make me feel things I don't\nbelieve in\nIt's all up in my heart\nAnd all up in my spine, those chills", "color": "#7a87a8" },
-  { "title": "i die first", "artist": "LANY", "lyric": "I guess no matter how far,\nit wouldn't ever add up to\na life without you\nI don't wanna know, baby,\ndon't go, make sure I die first", "color": "#d9615f" },
-  { "title": "Tonight (I Wish I Was Your Boy)", "artist": "The 1975", "lyric": "Tonight, I wish I was your boy", "color": "#9c8c8c" },
-  { "title": "Vanilla Twilight", "artist": "Owl City", "lyric": "I'd send a postcard to you, dear\n'Cause I wish you were here", "color": "#3a86b8" },
-  { "title": "Vanilla Twilight", "artist": "Owl City", "lyric": "Oh if my voice could reach back\nthrough the past\nI'd whisper in your ear\n\"Oh darling, I wish you were here\"", "color": "#3a86b8" },
-  { "title": "Heaven", "artist": "Bazzi", "lyric": "Feels like heaven (ah-ah-ah)\nWatching you move and dance\nIt feels like heaven, lost in you", "color": "#6b81c9" },
-  { "title": "Raye", "artist": "Sultan + Shepard, Shallou", "lyric": "Waiting for your love\nA million miles away", "color": "#7a87a8" },
-  { "title": "It's Not Living (If It's Not With You)", "artist": "The 1975", "lyric": "And all I do is sit and think\nabout you", "color": "#8f8f90" }
+  {
+    "title": "Heaven",
+    "artist": "Bazzi",
+    "lyric": "I'm just happy you are who\nyou are",
+    "color": "#6b81c9",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/19/bb/d9/19bbd9d7-bb3b-54bb-f037-b0df93830d7b/mzaf_1449055276133576212.plus.aac.p.m4a"
+  },
+  {
+    "title": "you!",
+    "artist": "LANY",
+    "lyric": "Like a flower in the concrete\nSo beautiful and rare",
+    "color": "#d9615f",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f6/34/4a/f6344a97-b62a-8c6b-6c77-f3913afcbd75/mzaf_17394438373104497727.plus.aac.p.m4a"
+  },
+  {
+    "title": "I'm In Love With You",
+    "artist": "The 1975",
+    "lyric": "I can summarize it for you\nIt's simple and it goes like this\nI'm in love with you, I- I- I- I- I\nI'm in love with you, I- I- I- I- I\nI'm in love with you, I- I- I- I- I",
+    "color": "#8f8f90",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c9/c6/f8/c9c6f89d-70bb-819b-940a-24d6cf0be21f/mzaf_8823669967239382383.plus.aac.p.m4a"
+  },
+  {
+    "title": "About You",
+    "artist": "The 1975",
+    "lyric": "I know a place\nIt's somewhere I go\nwhen I need to remember your face",
+    "color": "#8f8f90",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d0/8c/64/d08c6440-e727-10ab-589c-e36d5afea47e/mzaf_15879604028025493401.plus.aac.p.m4a"
+  },
+  {
+    "title": "All I Need",
+    "artist": "Nora En Pure",
+    "lyric": "Ooh love\nGimme love 'cause your love is all I\nneed",
+    "color": "#3a86b8",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/fc/3e/e6/fc3ee660-fd10-d727-9925-8084a1994c59/mzaf_17786676431226030076.plus.aac.p.m4a"
+  },
+  {
+    "title": "Nice to See You",
+    "artist": "Vansire, FLOOR CRY",
+    "lyric": "Did you know you're really\nsomething?\nYou make me feel things I don't\nbelieve in\nIt's all up in my heart\nAnd all up in my spine, those chills",
+    "color": "#7a87a8",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/7e/94/50/7e94500e-27a4-7fc1-b258-ab7bb261a223/mzaf_6591570456138603410.plus.aac.p.m4a"
+  },
+  {
+    "title": "i die first",
+    "artist": "LANY",
+    "lyric": "I guess no matter how far,\nit wouldn't ever add up to\na life without you\nI don't wanna know, baby,\ndon't go, make sure I die first",
+    "color": "#d9615f",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1c/9f/07/1c9f0715-78f9-255f-ed04-ff30a2425faf/mzaf_12715193363654581222.plus.aac.p.m4a"
+  },
+  {
+    "title": "Tonight (I Wish I Was Your Boy)",
+    "artist": "The 1975",
+    "lyric": "Tonight, I wish I was your boy",
+    "color": "#9c8c8c",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f4/71/5b/f4715b22-6c6f-7163-c349-027d0a4c4aa1/mzaf_6530231675582574485.plus.aac.p.m4a"
+  },
+  {
+    "title": "Vanilla Twilight",
+    "artist": "Owl City",
+    "lyric": "I'd send a postcard to you, dear\n'Cause I wish you were here",
+    "color": "#3a86b8",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4d/ea/43/4dea433f-b771-2309-c058-91b7befd8a71/mzaf_1428862084993849566.plus.aac.p.m4a"
+  },
+  {
+    "title": "Vanilla Twilight",
+    "artist": "Owl City",
+    "lyric": "Oh if my voice could reach back\nthrough the past\nI'd whisper in your ear\n\"Oh darling, I wish you were here\"",
+    "color": "#3a86b8",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4d/ea/43/4dea433f-b771-2309-c058-91b7befd8a71/mzaf_1428862084993849566.plus.aac.p.m4a"
+  },
+  {
+    "title": "Heaven",
+    "artist": "Bazzi",
+    "lyric": "Feels like heaven (ah-ah-ah)\nWatching you move and dance\nIt feels like heaven, lost in you",
+    "color": "#6b81c9",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/19/bb/d9/19bbd9d7-bb3b-54bb-f037-b0df93830d7b/mzaf_1449055276133576212.plus.aac.p.m4a"
+  },
+  {
+    "title": "Raye",
+    "artist": "Sultan + Shepard, Shallou",
+    "lyric": "Waiting for your love\nA million miles away",
+    "color": "#7a87a8",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/07/78/9c/07789c22-b50c-2f0a-0056-84b285f2ee2e/mzaf_11694629234342563198.plus.aac.p.m4a"
+  },
+  {
+    "title": "It's Not Living (If It's Not With You)",
+    "artist": "The 1975",
+    "lyric": "And all I do is sit and think\nabout you",
+    "color": "#8f8f90",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d0/ca/9c/d0ca9ce4-941c-819c-fcb7-67fb626197ba/mzaf_6270229495941719699.plus.aac.p.m4a"
+  }
 ]
