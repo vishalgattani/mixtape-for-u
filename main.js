@@ -11,12 +11,22 @@ const forwardBtn = document.getElementById('forward-btn');
 
 const LYRIC_MAX_SIZE = 30;
 const LYRIC_MIN_SIZE = 13;
+const SNIPPET_SECONDS = 10;
 
 let lyrics = [];
 let history = []; // indices into `lyrics`, in the order shown
 let pointer = -1; // position within `history` currently displayed
 let popped = false;
 let busy = false;
+
+const audio = new Audio();
+audio.preload = 'none';
+audio.addEventListener('timeupdate', () => {
+  if (audio.currentTime >= SNIPPET_SECONDS) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+});
 
 fetch('lyrics.json')
   .then((r) => r.json())
@@ -52,18 +62,41 @@ function fitLyric() {
   }
 }
 
-function render(index) {
+// loads (or clears) the audio source for a lyric entry; Play stays grayed
+// out whenever the current card has no matched preview clip.
+function loadTrack(entry) {
+  audio.pause();
+  if (entry.preview) {
+    audio.src = entry.preview;
+    audio.currentTime = 0;
+    playBtn.disabled = false;
+  } else {
+    audio.removeAttribute('src');
+    playBtn.disabled = true;
+  }
+}
+
+function playAudio() {
+  if (!audio.src) return;
+  audio.play().catch(() => {});
+}
+
+function render(index, { keepPlaying = false } = {}) {
   const entry = lyrics[index];
+  const wasPlaying = keepPlaying && !audio.paused;
+
   titleEl.textContent = entry.title;
   artistEl.textContent = entry.artist;
   lyricEl.textContent = entry.lyric;
   cardEl.style.setProperty('--card-color', entry.color);
+  loadTrack(entry);
 
   requestAnimationFrame(() => {
     fitLyric();
     cardEl.classList.add('popped');
     popped = true;
     busy = false;
+    if (wasPlaying) playAudio();
   });
 }
 
@@ -76,14 +109,14 @@ function goForward() {
     pointer = history.length - 1;
   }
   updateNavButtons();
-  render(history[pointer]);
+  render(history[pointer], { keepPlaying: true });
 }
 
 function goBack() {
   if (pointer <= 0) return;
   pointer -= 1;
   updateNavButtons();
-  render(history[pointer]);
+  render(history[pointer], { keepPlaying: true });
 }
 
 function popThenRun(fn) {
@@ -97,20 +130,24 @@ function popThenRun(fn) {
   }
 }
 
-// play: resume the background animation; show the current (or first) card
+// play: resume the background animation, show the current (or first) card, play its clip
 playBtn.addEventListener('click', () => {
   if (typeof loop === 'function') loop();
-  if (popped) return;
+  if (popped) {
+    playAudio();
+    return;
+  }
   popThenRun(() => {
     if (pointer === -1) {
       goForward();
     } else {
       render(history[pointer]);
     }
+    playAudio();
   });
 });
 
-// forward: skip to a new lyric (or redo one we'd rewound past)
+// forward: skip to a new lyric (or redo one we'd rewound past); keeps playing if it already was
 forwardBtn.addEventListener('click', () => {
   if (typeof loop === 'function') loop();
   popThenRun(goForward);
@@ -123,15 +160,18 @@ rewindBtn.addEventListener('click', () => {
   popThenRun(goBack);
 });
 
-// pause: freeze the background animation in place, leave the card as-is
+// pause: freeze the background animation and the audio clip in place
 pauseBtn.addEventListener('click', () => {
   if (typeof noLoop === 'function') noLoop();
+  audio.pause();
 });
 
-// stop: retract the card and reset back to the idle animated background
+// stop: retract the card, stop and reset the clip, resume the idle background
 stopBtn.addEventListener('click', () => {
   cardEl.classList.remove('popped');
   popped = false;
+  audio.pause();
+  audio.currentTime = 0;
   if (typeof loop === 'function') loop();
 });
 
