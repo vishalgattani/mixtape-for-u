@@ -20,17 +20,30 @@
     </div>
   </header>
 
-  <img id="card" alt="lyric card" />
+  <div id="card">
+    <div class="card-meta">
+      <span class="card-title"></span>
+      <span class="card-artist"></span>
+    </div>
+    <div class="lyric-box"><div class="lyric"></div></div>
+    <span class="card-mark">/// mixtape</span>
+  </div>
 
   <div id="controls">
+    <button id="rewind-btn" class="ctrl-btn" aria-label="Rewind">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14L1 12l11-7z" fill="currentColor"/><path d="M23 5v14L12 12l11-7z" fill="currentColor"/></svg>
+    </button>
     <button id="pause-btn" class="ctrl-btn" aria-label="Pause">
       <svg viewBox="0 0 24 24" width="20" height="20"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+    </button>
+    <button id="stop-btn" class="ctrl-btn" aria-label="Stop">
+      <svg viewBox="0 0 24 24" width="20" height="20"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/></svg>
     </button>
     <button id="play-btn" class="ctrl-btn ctrl-btn--primary" aria-label="Play">
       <svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 4.5v15l14-7.5-14-7.5z" fill="currentColor"/></svg>
     </button>
-    <button id="stop-btn" class="ctrl-btn" aria-label="Stop">
-      <svg viewBox="0 0 24 24" width="20" height="20"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/></svg>
+    <button id="forward-btn" class="ctrl-btn" aria-label="Forward">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14l11-7L12 5z" fill="currentColor"/><path d="M1 5v14l11-7L1 5z" fill="currentColor"/></svg>
     </button>
   </div>
 </div>
