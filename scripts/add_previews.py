@@ -19,6 +19,7 @@ silently kept — remove the field and re-run to refresh it).
 """
 
 import json
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -39,11 +40,28 @@ def primary_artist(artist: str) -> str:
     return artist.split(",")[0].split("+")[0].strip()
 
 
-def pick_match(results: list[dict], title: str) -> str | None:
-    """previewUrl of the first result whose trackName exactly matches title."""
-    wanted = title.strip().lower()
+def artist_matches(result_artist: str, expected_artist: str) -> bool:
+    """True if the expected (primary) artist is actually present in the result's
+    artistName — titles alone collide across unrelated artists far too often
+    (e.g. a dozen different songs are all called "you!" or "Heaven")."""
+    return primary_artist(expected_artist).strip().lower() in result_artist.strip().lower()
+
+
+def normalize_title(title: str) -> str:
+    """Strip a trailing "(feat. X)" / "(Live)" / etc. parenthetical so a bare
+    lyrics.json title still matches iTunes' fuller official track name."""
+    return re.sub(r"\s*\([^)]*\)\s*$", "", title).strip().lower()
+
+
+def pick_match(results: list[dict], title: str, artist: str) -> str | None:
+    """previewUrl of the first result whose trackName AND artistName both match."""
+    wanted = normalize_title(title)
     for r in results:
-        if r.get("trackName", "").strip().lower() == wanted and r.get("previewUrl"):
+        if (
+            normalize_title(r.get("trackName", "")) == wanted
+            and artist_matches(r.get("artistName", ""), artist)
+            and r.get("previewUrl")
+        ):
             return r["previewUrl"]
     return None
 
@@ -54,7 +72,7 @@ def find_preview(title: str, artist: str) -> str | None:
     search_data = _get_json(
         SEARCH_URL, {"term": f"{title} {first_artist}", "entity": "song", "limit": 10}
     )
-    match = pick_match(search_data.get("results", []), title)
+    match = pick_match(search_data.get("results", []), title, artist)
     if match:
         return match
 
@@ -67,7 +85,7 @@ def find_preview(title: str, artist: str) -> str | None:
 
     catalog = _get_json(LOOKUP_URL, {"id": artist_id, "entity": "song", "limit": 200})
     tracks = [r for r in catalog.get("results", []) if r.get("wrapperType") == "track"]
-    return pick_match(tracks, title)
+    return pick_match(tracks, title, artist)
 
 
 def main() -> None:
