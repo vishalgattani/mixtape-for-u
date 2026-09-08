@@ -207,3 +207,19 @@ header {
 }
 
 .ctrl-btn--primary:hover { background: linear-gradient(155deg, var(--accent), var(--accent-dark)); }
+
+/* phones: the 38vw/260px cap leaves too little room for title+lyric to
+   coexist without over-shrinking, so give the card a bigger, viewport-driven
+   size and push the control pill down to clear its taller bottom edge */
+@media (max-width: 600px) {
+  #card {
+    width: min(84vw, 340px);
+    padding: 20px;
+  }
+
+  #controls {
+    /* +28px visual gap below the card, +40px to account for #controls'
+       own translate(-50%,-50%) centering (its ~80px pill height / 2) */
+    top: calc(50% + min(84vw, 340px) / 2 + 68px);
+  }
+}
