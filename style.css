@@ -159,6 +159,20 @@ header {
   opacity: 0.55;
 }
 
+/* phones: the 38vw/260px cap leaves too little room for title+lyric to
+   coexist without over-shrinking, so give the card a bigger, viewport-driven
+   size and trim the surrounding chrome to match */
+@media (max-width: 600px) {
+  #card {
+    width: min(84vw, 340px);
+    padding: 20px;
+  }
+
+  #controls {
+    top: calc(50% + 45vw);
+  }
+}
+
 #controls {
   position: fixed;
   left: 50%;
