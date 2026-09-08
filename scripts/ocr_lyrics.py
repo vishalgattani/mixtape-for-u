@@ -103,7 +103,9 @@ def ocr_lines(img: Image.Image) -> list[dict]:
         if not text or conf < MIN_CONFIDENCE:
             continue
         key = (data["block_num"][i], data["par_num"][i], data["line_num"][i])
-        grouped.setdefault(key, []).append((text, data["left"][i], data["top"][i], data["height"][i]))
+        grouped.setdefault(key, []).append(
+            (text, data["left"][i], data["top"][i], data["height"][i])
+        )
 
     lines = []
     for key in sorted(grouped):
@@ -194,11 +196,7 @@ def main() -> None:
 
     crop_new_screenshots(lyrics_dir, stickers_dir)
 
-    to_process = [
-        p
-        for p in sorted(stickers_dir.glob("*.JPG"))
-        if p.name not in known_sources
-    ]
+    to_process = [p for p in sorted(stickers_dir.glob("*.JPG")) if p.name not in known_sources]
     if not to_process:
         print("nothing new to OCR")
         return
