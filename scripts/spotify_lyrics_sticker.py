@@ -24,7 +24,7 @@ from PIL import Image
 
 DEFAULT_INPUT = Path("/Users/vishalgattani/Desktop/my-brain-in-logseq/stickers/lyrics")
 DEFAULT_OUTPUT = Path("/Users/vishalgattani/Desktop/my-brain-in-logseq/stickers")
-DIFF_THRESHOLD = 18  # per-channel-summed color distance from row's background reference
+DIFF_THRESHOLD = 10  # per-channel-summed color distance from row's background reference
 
 
 def find_card_bbox(arr: np.ndarray) -> tuple[int, int, int, int] | None:
